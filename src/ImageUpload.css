@@ -1,0 +1,31 @@
+.imageupload{
+ display: flex;
+ flex-direction: column;
+ width:100%;
+ 
+ background-color: white;
+ border-top: thin;
+ 
+}
+
+.imageupload__progress{
+    width: 100%;
+}
+
+.imageupload__caption{
+    padding: 15px;
+}
+
+.imageupload__file{
+    padding: 10px 0px;
+}
+
+.imageupload__preview{
+    width: 100px;
+    margin: auto;
+}
+  
+  .imageupload__preview img {
+    max-height:100%;
+    max-width: 100%;
+  }

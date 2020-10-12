@@ -1,0 +1,34 @@
+/* to restrict the change of size of logo */
+.app__header{
+    background-color: white;
+    padding: 10px;
+    display: flex;
+    border-bottom: 1px solid lightgray;
+    margin-bottom: 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+  
+  .app__headerUploadButton{
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+  }
+  
+  .app__headerImage{
+    height: 30px;  
+    display: flex;
+    justify-content: center;
+  }
+  
+  .app__headerButton{
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .app__header__signup{
+    display: flex;
+    flex-direction: column;
+  }

@@ -1,0 +1,17 @@
+ /* To remove defult margin */
+*{
+  margin:0px;
+}
+
+.app {
+  background-color: #f7f7f7;
+  height: 100%;
+  border-bottom: dashed;
+}
+
+ 
+
+.app__avatar{
+  width: 30px;
+  height: 30px;
+}

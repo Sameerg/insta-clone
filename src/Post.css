@@ -1,0 +1,144 @@
+.post {
+  max-width: 500px;
+  border: 1px solid lightgray;
+  margin: auto;
+  margin-bottom: 45px;
+  background-color: white;
+}
+
+.post__header {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+}
+
+.post__username {
+  padding-left: 10px;
+}
+
+.post__image {
+  width: 100%;
+  object-fit: contain;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.post__text {
+  font-weight: normal;
+  padding: 10px 10px 0px 10px;
+}
+
+.post__commentBox {
+  display: flex;
+  margin-top: 10px;
+}
+
+.post__input {
+  flex: 1;
+  border: 0px;
+  padding: 15px;
+  border: none;
+  border-top: 1px solid lightgray;
+}
+
+.post__button {
+  flex: 0;
+  border: none;
+  color: lightskyblue;
+  border-top: 1px solid lightgray;
+  background-color: white;
+}
+
+.post__comments {
+  padding: 0px 10px 5px 10px;
+  color: rgb(51, 51, 51);
+}
+
+.post__avatar {
+  position: inherit !important;
+}
+
+.post__comment__delete {
+  float: right;
+  color: #8e8e8e;
+  cursor: pointer;
+}
+
+.post__delete {
+  margin-left: auto;
+  font-size: small;
+  color: #8e8e8e;
+  cursor: pointer;
+}
+
+.post__timestamp {
+  font-size: 12px;
+  font-weight: 400;
+  color: #8e8e8e;
+  padding-left: 10px;
+}
+
+.post__comments__username {
+  font-weight: 600;
+}
+
+.post__comments__text {
+  word-wrap: break-word;
+  max-width: 300px;
+}
+
+.post__comments__avatar {
+  width: 20px !important;
+  font-size: 12px !important;
+  height: 20px !important;
+  float: left;
+  margin-right: 10px;
+}
+
+.image-container {
+  width: 100%;
+  object-fit: contain;
+  display: block;
+  position: relative;
+}
+
+.instagram-heart {
+  width: 60px;
+  height: 70px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  background: url("/heart.png")
+    no-repeat center/contain;
+  opacity: 0;
+  transform: scale(0);
+}
+
+.image-container .instagram-heart {
+  animation-duration: 1000ms;
+  animation-name: like-heart-animation;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes like-heart-animation {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  15% {
+    opacity: 0.9;
+    transform: scale(1.2);
+  }
+  30% {
+    transform: scale(0.95);
+  }
+  45%,
+  80% {
+    opacity: 0.9;
+    transform: scale(1);
+  }
+}
