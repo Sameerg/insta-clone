@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./App.css";
+import "./Styles/App.css";
 import Post from "./Post";
 import Header from "./Header";
 import { db } from "./firebase";

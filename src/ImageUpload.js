@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button } from "@material-ui/core";
 import firebase from "firebase/app";
 import { storage, db } from "./firebase";
-import "./ImageUpload.css";
+import "./Styles/ImageUpload.css";
 import uuid from "uuid";
 import imageCompression from "browser-image-compression";
 

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./Header.css";
+import "./Styles/Header.css";
 import Modal from "@material-ui/core/Modal";
 import Button from "@material-ui/core/Button";
 import Input from "@material-ui/core/Input";
@@ -119,7 +119,7 @@ function Header(props) {
         onClose={() => setOpenSignIn(false)}
       >
         <div style={modalStyle} className={classes.paper}>
-          <form className="app__header__signup">
+          <form className="app__header__signup" >
             <center>
               <h2>Sign In</h2>
             </center>
@@ -161,9 +161,7 @@ function Header(props) {
       <div className="app__header">
         {props.user && (
           <div className="app__headerUploadButton">
-            <Button onClick={() => setOpenUpload(true)}>
-              <InstagramIcon />
-            </Button>
+              <InstagramIcon onClick={() => setOpenUpload(true)}/>
           </div>
         )}
         <img

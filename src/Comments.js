@@ -1,5 +1,5 @@
 import React from "react";
-import "./Comments.css";
+import "./Styles/Comments.css";
 import { db } from "./firebase";
 import HighlightOffOutlinedIcon from "@material-ui/icons/HighlightOffOutlined";
 

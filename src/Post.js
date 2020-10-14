@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./Post.css";
+import "./Styles/Post.css";
 import Comments from "./Comments";
 import Avatar from "@material-ui/core/Avatar";
 import { db, storage } from "./firebase";
@@ -45,6 +45,8 @@ function Post(props) {
 
   const postComment = (e) => {
     e.preventDefault();
+    if (!comment)
+    alert("Comment can't be blank");
     db.collection("posts").doc(props.postId).collection("comments").add({
       text: comment,
       username: props.signedInUser.displayName,
