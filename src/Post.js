@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "./Post.css";
+import Comments from "./Comments";
 import Avatar from "@material-ui/core/Avatar";
 import { db, storage } from "./firebase";
 import firebase from "firebase/app";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
-import HighlightOffOutlinedIcon from "@material-ui/icons/HighlightOffOutlined";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 
@@ -75,47 +75,6 @@ function Post(props) {
       });
   }
 
-  function handleDeleteComment(postId, commentId) {
-    db.collection("posts")
-      .doc(postId)
-      .collection("comments")
-      .doc(commentId)
-      .delete()
-      .then(() => {
-        console.log("Deleted");
-      })
-      .catch((err) => console.log(err));
-  }
-
-  function timeSince(timeStamp) {
-    var now = new Date(),
-      secondsPast = (now.getTime() - timeStamp.getTime()) / 1000;
-    if (secondsPast < 0) {
-      return "0 seconds ago";
-    }
-    if (secondsPast < 60) {
-      return parseInt(secondsPast) + " seconds ago";
-    }
-    if (secondsPast < 3600) {
-      return parseInt(secondsPast / 60) + " mins ago";
-    }
-    if (secondsPast <= 86400) {
-      return parseInt(secondsPast / 3600) + " hours ago";
-    }
-    if (secondsPast > 86400) {
-      let day = timeStamp.getDate();
-      let month = timeStamp
-        .toDateString()
-        .match(/ [a-zA-Z]*/)[0]
-        .replace(" ", "");
-      let year =
-        timeStamp.getFullYear() === now.getFullYear()
-          ? ""
-          : " " + timeStamp.getFullYear();
-      return day + " " + month + year;
-    }
-  }
-
   const handleLike = (signedInUser, postId) => {
     if (signedInUser) {
       setheartClass(true);
@@ -131,16 +90,17 @@ function Post(props) {
   };
 
   const handleToggleComments = (postId, disableComments) => {
-      db.collection("posts")
-        .doc(postId)
-        .update({ isCommentsDisabled: disableComments}).then(() => {
-          alert(disableComments ? "Comments Disabled!": "Comments Enabled!");
-        })
-        .catch((error) => {
-          console.error("handleToggleComments: ", error);
-        });;
+    db.collection("posts")
+      .doc(postId)
+      .update({ isCommentsDisabled: disableComments })
+      .then(() => {
+        alert(disableComments ? "Comments Disabled!" : "Comments Enabled!");
+      })
+      .catch((error) => {
+        console.error("handleToggleComments: ", error);
+      });
 
-        handleClose();
+    handleClose();
   };
 
   return (
@@ -164,7 +124,13 @@ function Post(props) {
               >
                 Delete
               </MenuItem>
-        <MenuItem onClick={() => handleToggleComments(props.postId, !props.isCommentsDisabled) }>{!props.isCommentsDisabled   ? "Disable" : "Enable" } comments</MenuItem>
+              <MenuItem
+                onClick={() =>
+                  handleToggleComments(props.postId, !props.isCommentsDisabled)
+                }
+              >
+                {!props.isCommentsDisabled ? "Disable" : "Enable"} comments
+              </MenuItem>
             </Menu>
           </div>
         ) : (
@@ -183,35 +149,12 @@ function Post(props) {
         <div className={heartClass ? "instagram-heart" : ""}></div>
       </div>
 
-      {props.likes ? <h4 className="post__text">{props.likes} likes</h4> : ""}
+      {props.likes && <h4 className="post__text">{props.likes} likes</h4>}
 
       <h4 className="post__text">
         <strong>{props.username}</strong> {props.caption}
       </h4>
-
-      <div>
-        {comments.map(({ id, data }) => (
-          <div className="post__comments" key={id}>
-            <span className="post__comments__username">{data.username}</span>{" "}
-            <span className="post__comments__text">{data.text}</span>
-            {props.postUserId === props.signedInUser?.uid ||
-            data.userId === props.signedInUser?.uid ? (
-              <div
-                className="post__comment__delete"
-                onClick={() => handleDeleteComment(props.postId, id)}
-              >
-                <HighlightOffOutlinedIcon />
-              </div>
-            ) : (
-              ""
-            )}
-          </div>
-        ))}
-        <div className="post__timestamp">
-          {" "}
-          {timeSince(new Date(props.serverTime?.seconds * 1000))}
-        </div>
-      </div>
+      <Comments comments={comments} postUserId={props.postUserId} signedInUser={props.signedInUser} postId={props.postId} serverTime={props.serverTime}/>
 
       {props.signedInUser && !props.isCommentsDisabled ? (
         <form className="post__commentBox" onSubmit={postComment}>

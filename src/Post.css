@@ -26,7 +26,7 @@
 
 .post__text {
   font-weight: normal;
-  padding: 10px 10px 0px 10px;
+  padding: 10px;
 }
 
 .post__commentBox {
@@ -59,11 +59,6 @@
   position: inherit !important;
 }
 
-.post__comment__delete {
-  float: right;
-  color: #8e8e8e;
-  cursor: pointer;
-}
 
 .post__delete {
   margin-left: auto;
@@ -72,29 +67,6 @@
   cursor: pointer;
 }
 
-.post__timestamp {
-  font-size: 12px;
-  font-weight: 400;
-  color: #8e8e8e;
-  padding-left: 10px;
-}
-
-.post__comments__username {
-  font-weight: 600;
-}
-
-.post__comments__text {
-  word-wrap: break-word;
-  max-width: 300px;
-}
-
-.post__comments__avatar {
-  width: 20px !important;
-  font-size: 12px !important;
-  height: 20px !important;
-  float: left;
-  margin-right: 10px;
-}
 
 .image-container {
   width: 100%;

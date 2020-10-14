@@ -1,0 +1,23 @@
+
+.post__comments__username {
+    font-weight: 600;
+  }
+  
+.post__comments__text {
+    word-wrap: break-word;
+    max-width: 300px;
+  }
+    
+.post__comment__delete {
+    float: right;
+    color: #8e8e8e;
+    cursor: pointer;
+  }
+  
+.post__timestamp {
+    font-size: 12px;
+    font-weight: 400;
+    color: #8e8e8e;
+    padding-left: 10px;
+  }
+  

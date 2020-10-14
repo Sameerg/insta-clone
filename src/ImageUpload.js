@@ -20,7 +20,7 @@ function ImageUpload({ user, onImageUpload }) {
         setImageSrc(event.target.result);
       };
       reader.readAsDataURL(file);
-      
+
       setImage(event.target.files[0]);
     }
   };

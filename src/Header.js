@@ -79,7 +79,7 @@ function Header(props) {
 
   return (
     <div>
-      <Modal open={open} onClose={() => setOpen(false)}>
+      <Modal animation="false" open={open} onClose={() => setOpen(false)}>
         <div style={modalStyle} className={classes.paper}>
           <form className="app__header__signup">
             <center>
@@ -113,7 +113,11 @@ function Header(props) {
         </div>
       </Modal>
 
-      <Modal open={openSignIn} onClose={() => setOpenSignIn(false)}>
+      <Modal
+        animation="false"
+        open={openSignIn}
+        onClose={() => setOpenSignIn(false)}
+      >
         <div style={modalStyle} className={classes.paper}>
           <form className="app__header__signup">
             <center>
@@ -138,7 +142,11 @@ function Header(props) {
         </div>
       </Modal>
 
-      <Modal open={openUpload} onClose={() => setOpenUpload(false)}>
+      <Modal
+        animation="false"
+        open={openUpload}
+        onClose={() => setOpenUpload(false)}
+      >
         <div style={modalStyle} className={classes.paper}>
           <center>
             <h2>Upload</h2>
